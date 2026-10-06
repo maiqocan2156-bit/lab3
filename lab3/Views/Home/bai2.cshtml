@@ -1,0 +1,194 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bài 2</title>
+
+    <script type="text/javascript">
+
+        function getValue(id) {
+            return document.getElementById(id).value.trim();
+        }
+
+        function showError(key, mess) {
+            document.getElementById(key + '_error').innerHTML = mess;
+        }
+
+        function vanPhong() {
+            alert("Bạn chọn giao hàng tại văn phòng");
+        }
+
+        function nhaRieng() {
+            alert("Bạn chọn giao hàng tại nhà riêng");
+        }
+
+        function validate() {
+
+            var flag = true;
+
+            var ten = getValue("ten");
+            if (ten == '') {
+                flag = false;
+                showError("ten", "Vui lòng nhập tên");
+            }
+            else {
+                showError("ten", "");
+            }
+
+            var diachi = getValue("diachi");
+            if (diachi == '') {
+                flag = false;
+                showError("diachi", "Vui lòng nhập địa chỉ");
+            }
+            else {
+                showError("diachi", "");
+            }
+
+            var dienthoai = getValue("dienthoai");
+
+            if (dienthoai == '' ||
+                dienthoai.length != 10 ||
+                !/^[0-9]+$/.test(dienthoai)) {
+
+                flag = false;
+                showError("dienthoai",
+                    "Số điện thoại phải gồm 10 ký tự số");
+            }
+            else {
+                showError("dienthoai", "");
+            }
+
+            var tinh = getValue("tinh");
+            if (tinh == '') {
+                flag = false;
+                showError("tinh", "Vui lòng nhập tỉnh/thành phố");
+            }
+            else {
+                showError("tinh", "");
+            }
+
+            var quan = getValue("quan");
+            if (quan == '') {
+                flag = false;
+                showError("quan", "Vui lòng nhập quận/huyện");
+            }
+            else {
+                showError("quan", "");
+            }
+
+            var phuong = getValue("phuong");
+            if (phuong == '') {
+                flag = false;
+                showError("phuong", "Vui lòng nhập phường/xã");
+            }
+            else {
+                showError("phuong", "");
+            }
+
+            if (flag == true) {
+                alert("Lưu thông tin thành công");
+            }
+            else {
+                alert("Thông tin nhập không hợp lệ");
+            }
+
+            return false;
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <form>
+
+        <table border="1" cellpadding="8">
+
+            <tr>
+                <th colspan="2">Thông tin giao hàng</th>
+            </tr>
+
+            <tr>
+                <td>Tên:</td>
+                <td>
+                    <input type="text" id="ten" />
+                    <span id="ten_error" style="color:red"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Địa chỉ nhận hàng:</td>
+                <td>
+                    <input type="text" id="diachi" />
+                    <span id="diachi_error" style="color:red"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Số điện thoại:</td>
+                <td>
+                    <input type="text" id="dienthoai" />
+                    <span id="dienthoai_error" style="color:red"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Tỉnh / thành phố:</td>
+                <td>
+                    <input type="text" id="tinh" />
+                    <span id="tinh_error" style="color:red"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Quận / Huyện:</td>
+                <td>
+                    <input type="text" id="quan" />
+                    <span id="quan_error" style="color:red"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Phường / Xã:</td>
+                <td>
+                    <input type="text" id="phuong" />
+                    <span id="phuong_error" style="color:red"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Lựa chọn tên cho địa chỉ thường dùng:</td>
+                <td>
+                    <input type="button"
+                           value="Văn phòng"
+                           onclick="vanPhong();" 
+                           style="background-color: #337ab7; color: white; border: none; padding: 8px 15px;" />
+                           
+                    <input type="button"
+                           value="Nhà riêng"
+                           onclick="nhaRieng();" 
+                           style="background-color: #5cb85c; color: white; border: none; padding: 8px 15px;" />
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button"
+                           value="Lưu"
+                           onclick="validate();" 
+                           style="background-color: #d9534f; color: white; border: none; padding: 8px 15px;" />
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+
+</body>
+</html>

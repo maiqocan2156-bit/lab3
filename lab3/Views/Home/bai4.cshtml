@@ -1,0 +1,140 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bài 4</title>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        .todo {
+            width: 450px;
+            margin: 30px auto;
+        }
+
+        .input-area {
+            display: flex;
+        }
+
+        #task {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+        }
+
+        #add {
+            width: 60px;
+            font-size: 25px;
+        }
+
+        .item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+            .item input {
+                margin-right: 10px;
+            }
+
+        .done {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        function addTask() {
+
+            var task = document.getElementById("task").value.trim();
+
+            if (task == '') {
+                return;
+            }
+
+            var list = document.getElementById("list");
+
+            var div = document.createElement("div");
+            div.className = "item";
+
+            var checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+
+            var span = document.createElement("span");
+            span.innerHTML = task;
+
+            checkbox.onclick = function () {
+
+                if (checkbox.checked == true) {
+                    span.className = "done";
+                }
+                else {
+                    span.className = "";
+                }
+
+            };
+
+            div.appendChild(checkbox);
+            div.appendChild(span);
+
+            list.appendChild(div);
+
+            document.getElementById("task").value = "";
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div class="todo">
+
+        <div class="input-area">
+
+            <input type="text"
+                   id="task"
+                   placeholder="Enter a task" />
+
+            <input type="button"
+                   id="add"
+                   value="+"
+                   onclick="addTask();" />
+
+        </div>
+
+        <div id="list">
+
+            <div class="item">
+                <input type="checkbox"
+                       onclick="this.nextElementSibling.className =
+                       this.checked ? 'done' : '';" />
+                <span>Việc 1</span>
+            </div>
+
+            <div class="item">
+                <input type="checkbox"
+                       onclick="this.nextElementSibling.className =
+                       this.checked ? 'done' : '';" />
+                <span>Việc 2</span>
+            </div>
+
+            <div class="item">
+                <input type="checkbox"
+                       onclick="this.nextElementSibling.className =
+                       this.checked ? 'done' : '';" />
+                <span>Việc 3</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

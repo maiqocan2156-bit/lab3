@@ -1,0 +1,162 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bài 1</title>
+
+    <script type="text/javascript">
+
+        function getValue(id) {
+            return document.getElementById(id).value.trim();
+        }
+
+        function showError(key, mess) {
+            document.getElementById(key + '_error').innerHTML = mess;
+        }
+
+        function chuyenNganh() {
+            var value = document.getElementById("chuyennganh").value;
+
+            if (value == "hethong") {
+                document.getElementById("sotruong").innerHTML =
+                    "Phân tích và thiết kế";
+            }
+            else if (value == "phanmem") {
+                document.getElementById("sotruong").innerHTML =
+                    "Lập trình";
+            }
+            else if (value == "mang") {
+                document.getElementById("sotruong").innerHTML =
+                    "Quản trị mạng";
+            }
+            else {
+                document.getElementById("sotruong").innerHTML = "";
+            }
+        }
+
+        function validate() {
+
+            var flag = true;
+
+            // Mã sinh viên
+            var masv = getValue("masv");
+
+            if (masv == '' || masv.length > 10) {
+                flag = false;
+                showError("masv", "Mã sinh viên gồm 10 ký tự");
+            }
+            else {
+                showError("masv", "");
+            }
+
+            // Họ tên
+            var hoten = getValue("hoten");
+
+            if (hoten == '' || hoten.length > 30) {
+                flag = false;
+                showError("hoten", "Họ tên không rỗng và < 30 ký tự");
+            }
+            else {
+                showError("hoten", "");
+            }
+
+            // Tuổi
+            var tuoi = parseInt(getValue("tuoi"));
+
+            if (isNaN(tuoi) || tuoi < 18) {
+                flag = false;
+                showError("tuoi", "Tuổi phải từ 18 trở lên");
+            }
+            else {
+                showError("tuoi", "");
+            }
+
+            // Nếu hợp lệ
+            if (flag == true) {
+                alert("Bạn đã đăng ký thành công");
+            }
+
+            return false;
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <h2>PHIẾU THAM GIA CLB TIN HỌC <span style="color:blue">LUBU</span></h2>
+
+    <form>
+        <table border="1" cellpadding="8">
+
+            <tr>
+                <td>Mã sinh viên:</td>
+                <td>
+                    <input type="text" id="masv" />
+                    <span id="masv_error" style="color:red"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Họ và tên:</td>
+                <td>
+                    <input type="text" id="hoten" />
+                    <span id="hoten_error" style="color:red"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Tuổi:</td>
+                <td>
+                    <input type="text" id="tuoi" />
+                    <span id="tuoi_error" style="color:red"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Ngoại ngữ:</td>
+                <td>
+                    <input type="checkbox" name="ngoaingu" value="Anh" /> Anh
+                    <input type="checkbox" name="ngoaingu" value="Pháp" /> Pháp
+                    <input type="checkbox" name="ngoaingu" value="Nhật" /> Nhật
+                </td>
+            </tr>
+
+            <tr>
+                <td>Chuyên ngành:</td>
+                <td>
+                    <select id="chuyennganh" onchange="chuyenNganh();">
+                        <option value="">--Chọn--</option>
+                        <option value="hethong">Hệ thống</option>
+                        <option value="phanmem">Phần mềm</option>
+                        <option value="mang">Mạng máy tính</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Sở trường:</td>
+                <td>
+                    <span id="sotruong"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit"
+                           value="Đăng ký"
+                           onclick="return validate();" />
+                </td>
+            </tr>
+
+        </table>
+    </form>
+
+</body>
+</html>

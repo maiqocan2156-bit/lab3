@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bài 5</title>
+
+    <style>
+
+        .progress {
+            width: 500px;
+            height: 30px;
+            background-color: #ddd;
+            border-radius: 20px;
+            margin: 30px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 30px;
+            width: 0%;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+
+        #bar1 {
+            background-color: purple;
+        }
+
+        #bar2 {
+            background-color: teal;
+        }
+
+        #bar3 {
+            background-color: orange;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            var bar1 = document.getElementById("bar1");
+            var bar2 = document.getElementById("bar2");
+            var bar3 = document.getElementById("bar3");
+
+            bar1.style.width = "56%";
+            bar1.innerHTML = "56%";
+
+            bar2.style.width = "35%";
+            bar2.innerHTML = "35%";
+
+            bar3.style.width = "52%";
+            bar3.innerHTML = "52%";
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <h3>Progress Bar</h3>
+
+    <div class="progress">
+        <div class="progress-bar" id="bar1"></div>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="bar2"></div>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="bar3"></div>
+    </div>
+
+</body>
+</html>

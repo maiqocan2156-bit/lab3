@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>vd6</title>
+    <script type="text/javascript">
+        function ResultView() {
+            var checkbox = document.getElementsByName("nutchon");
+            var result = "";
+
+            for (var i = 0; i < checkbox.length; i++) {
+                if (checkbox[i].checked == true) {
+                    result += "[" + checkbox[i].value + "]";
+                }
+            }
+
+            alert("Sở thích là: " + result);
+        }
+    </script>
+</head>
+<body>
+    <h4>Hãy chọn các sở thích của bạn</h4>
+
+    <input type="checkbox" name="nutchon" value="Đi chơi" /> Đi chơi
+    <br />
+
+    <input type="checkbox" name="nutchon" value="Đi du lịch" /> Đi du lịch
+    <br />
+
+    <input type="checkbox" name="nutchon" value="Đi ăn" /> Đi ăn
+    <br />
+
+    <input type="checkbox" name="nutchon" value="Đi siêu thị" /> Đi siêu thị
+    <br />
+
+    <input type="checkbox" name="nutchon" value="Học lập trình" /> Học lập trình
+    <br />
+
+    <input type="checkbox" name="nutchon" value="Ở nhà nghỉ ngơi" /> Ở nhà nghỉ ngơi
+    <br />
+    <br />
+
+    <input type="button" value="Xem kết quả" onclick="ResultView();" />
+</body>
+</html>
